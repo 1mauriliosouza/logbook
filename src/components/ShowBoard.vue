@@ -1,9 +1,9 @@
 <template>
   <b-row>
     <b-col cols="12">
-      <h3>
-        Adicionar Ticket
-      </h3>
+      <h4 class="my-4">
+        Detalhes do Ticket
+      </h4>
       <b-jumbotron>
         <template slot="lead">
           Data: {{board.data}}<br>

@@ -1,14 +1,33 @@
 <template>
 <div id="navbar" class="header">
+  <b-navbar toggleable="lg" type="dark" variant="dark">
+    <b-navbar-brand href="#/">
+        <img src="./logo.png" alt="logo_vodafone" height="30px">
+        ANOC ES - Logbook
+    </b-navbar-brand>
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-<b-nav class="m-4" align="right">
-<b-button-group>
-    <b-button class="btn-danger" size="md" href="#/add-board">Adicionar Ticket</b-button>
-    <b-button class="btn-danger active" size="md" aria-label="Close" href="#/">
-        <span aria-hidden="true">&times;</span>
-    </b-button>
-</b-button-group>
-</b-nav>
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav>
+        <b-nav-item href="#/add-board">Adicionar Ticket</b-nav-item>
+      </b-navbar-nav>
+
+      <!-- Right aligned nav items -->
+      <b-navbar-nav class="ml-auto">
+        <b-nav-form>
+          <b-form-input size="sm" class="mr-sm-2" placeholder="Digite o número do ticket"></b-form-input>
+          <b-button size="sm" class="my-2 my-sm-0" type="submit">Pesquisar</b-button>
+        </b-nav-form>
+
+        <b-nav-item-dropdown right>
+          <!-- Using 'button-content' slot -->
+          <template slot="button-content"><em>Usuário</em></template>
+          <b-dropdown-item href="#">Perfil</b-dropdown-item>
+          <b-dropdown-item href="#">Logout</b-dropdown-item>
+        </b-nav-item-dropdown>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
 </div>
 </template>
 
@@ -34,5 +53,8 @@ export default {
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
     outline: none !important;
     box-shadow: none;
+}
+li {
+    list-style-type: none;
 }
 </style>

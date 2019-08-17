@@ -1,10 +1,10 @@
 <template>
   <b-row>
     <b-col cols="12">
-      <h3>
+      <h4 class="my-4">
         ANOC Logbook
-      </h3>
-      <b-table Borderless Striped Small Bordered hover :items="logs" :fields="fields">
+      </h4>
+      <b-table Borderless Striped Small Bordered responsive hover :items="logs" :fields="fields">
         <template slot="actions" scope="row">
           <b-btn size="sm" @click.stop="details(row.item)">Detalhes</b-btn>
         </template>
@@ -64,6 +64,7 @@ export default {
 
 <style>
   .table {
+    font: 100px;
     width: 96%;
     margin: 0 auto;
   }

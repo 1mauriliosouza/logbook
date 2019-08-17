@@ -1,9 +1,9 @@
 <template>
   <b-row>
     <b-col cols="12">
-      <h3>
+      <h4 class="my-4">
         Adicionar Ticket
-      </h3>
+      </h4>
       <b-jumbotron>
         <b-form @submit="onSubmit">
           <b-form-group id="fieldsetHorizontal"
@@ -11,14 +11,14 @@
                     :label-cols="4"
                     breakpoint="md"
                     label="Data">
-            <b-form-input id="data" v-model.trim="board.data"></b-form-input>
+            <b-form-input id="data" v-model.trim="board.data" type="date"></b-form-input>
           </b-form-group>
           <b-form-group id="fieldsetHorizontal"
                     horizontal
                     :label-cols="4"
                     breakpoint="md"
-                    label="Equipe">
-            <b-form-input id="equipe" v-model.trim="board.equipe"></b-form-input>
+                    label="Equipa">
+            <b-form-select id="equipe" v-model="board.equipe"></b-form-select>
           </b-form-group>
           <b-form-group id="fieldsetHorizontal"
                     horizontal
@@ -39,7 +39,7 @@
                     :label-cols="4"
                     breakpoint="md"
                     label="TIR">
-            <b-form-input id="tir" v-model.trim="board.tir"></b-form-input>
+            <b-form-input id="tir" v-model.trim="board.tir" type="number"></b-form-input>
           </b-form-group>
           <b-form-group id="fieldsetHorizontal"
                     horizontal
@@ -66,13 +66,28 @@
 
 import firebase from '../Firebase'
 import router from '../router/index'
+import DatePicker from 'vue2-datepicker'
 
 export default {
   name: 'AddBoard',
+  components: {
+    DatePicker
+  },
   data () {
     return {
       ref: firebase.firestore().collection('logs'),
-      board: {}
+      board: {
+        equipe: [{text: 'Selecionar equipa', value: null}, 'HFC', 'AX', 'EN', 'FTTH'],
+        show:true
+      },
+      types: [
+          'text',
+          'number',
+          'url',
+          'date',
+          `time`,
+      ],
+      
     }
   },
   methods: {

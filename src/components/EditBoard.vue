@@ -1,9 +1,9 @@
 <template>
   <b-row>
     <b-col cols="12">
-      <h2>
+      <h4 class="my-4">
        Editar Ticket
-      </h2>
+      </h4>
       <b-jumbotron>
         <b-form @submit="onSubmit">
           <b-form-group id="fieldsetHorizontal"
@@ -11,14 +11,14 @@
                     :label-cols="4"
                     breakpoint="md"
                     label="Data">
-            <b-form-input id="data" v-model.trim="board.data"></b-form-input>
+            <b-form-input id="data" v-model.trim="board.data" type="date"></b-form-input>
           </b-form-group>
           <b-form-group id="fieldsetHorizontal"
                     horizontal
                     :label-cols="4"
                     breakpoint="md"
                     label="Equipe">
-            <b-form-input id="equipe" v-model.trim="board.equipe"></b-form-input>
+            <b-form-input id="equipe" v-model.trim="board.equipe" :options="equipes"></b-form-input>
           </b-form-group>
           <b-form-group id="fieldsetHorizontal"
                     horizontal
@@ -39,7 +39,7 @@
                     :label-cols="4"
                     breakpoint="md"
                     label="TIR">
-            <b-form-input id="tir" v-model.trim="board.tir"></b-form-input>
+            <b-form-input id="tir" v-model.trim="board.tir" type="number"></b-form-input>
           </b-form-group>
           <b-form-group id="fieldsetHorizontal"
                     horizontal
@@ -66,13 +66,23 @@
 
 import firebase from '../Firebase'
 import router from '../router/index'
+import DatePicker from 'vue2-datepicker'
 
 export default {
   name: 'EditBoard',
   data () {
     return {
       key: this.$route.params.id,
-      board: {}
+      board: {},
+      types: [
+          'text',
+          'number',
+          'url',
+          'date',
+          `time`,
+      ],
+      equipes: [{text: 'Selecionar equipa', value: null}, 'HFC', 'AX', 'EN', 'FTTH'],
+      show:true
     }
   },
   created () {
