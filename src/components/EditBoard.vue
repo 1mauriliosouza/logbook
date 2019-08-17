@@ -2,7 +2,7 @@
   <b-row>
     <b-col cols="12">
       <h2>
-        Edit Board
+       Editar Ticket
       </h2>
       <b-jumbotron>
         <b-form @submit="onSubmit">

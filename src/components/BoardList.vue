@@ -2,7 +2,7 @@
   <b-row>
     <b-col cols="12">
       <h3>
-        Logbook
+        ANOC Logbook
       </h3>
       <b-table Borderless Striped Small Bordered hover :items="logs" :fields="fields">
         <template slot="actions" scope="row">
