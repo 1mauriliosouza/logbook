@@ -21,14 +21,19 @@
 
         <b-nav-item-dropdown right>
           <!-- Using 'button-content' slot -->
-          <template slot="button-content"><em>Usuário</em></template>
-          <b-dropdown-item href="#">Perfil</b-dropdown-item>
+          <template slot="button-content"><em>Autenticação</em></template>
+          <b-dropdown-item v-b-modal.modal-1>Login</b-dropdown-item>
           <b-dropdown-item href="#">Logout</b-dropdown-item>
+            <b-modal id="modal-1" title="Autenticação de usuários">
+                <p class="my-4">Registro ainda não disponível.</p>
+            </b-modal>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
 </div>
+
+
 </template>
 
 <script>

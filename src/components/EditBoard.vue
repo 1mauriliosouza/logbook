@@ -17,8 +17,8 @@
                     horizontal
                     :label-cols="4"
                     breakpoint="md"
-                    label="Equipe">
-            <b-form-input id="equipe" v-model.trim="board.equipe" :options="equipes"></b-form-input>
+                    label="Equipa">
+            <b-form-select id="equipe" v-model="board.equipe" :options="tecnologias"></b-form-select>
           </b-form-group>
           <b-form-group id="fieldsetHorizontal"
                     horizontal
@@ -53,9 +53,9 @@
                     :label-cols="4"
                     breakpoint="md"
                     label="Avisado">
-            <b-form-input id="avisado" v-model.trim="board.avisado"></b-form-input>
+            <b-form-select id="avisado" v-model="board.avisado" :options="informes"></b-form-select>
           </b-form-group>
-          <b-button type="submit" variant="primary">Atualizar</b-button>
+          <b-button type="submit" variant="primary">Salvar</b-button>
         </b-form>
       </b-jumbotron>
     </b-col>
@@ -74,6 +74,19 @@ export default {
     return {
       key: this.$route.params.id,
       board: {},
+      selected: null,
+      tecnologias: [
+        { text:'HFC'}, 
+        { text:'AX'}, 
+        { text:'EN'}, 
+        { text:'FTTH'}
+        ],
+        informes: [
+        { text:'Avisado a CDU (EULEN)'}, 
+        { text:'Avisado a CDU (FLM)'}, 
+        { text:'Cancelado'}, 
+        { text:'Reaberto'}
+        ],
       types: [
           'text',
           'number',
@@ -81,8 +94,6 @@ export default {
           'date',
           `time`,
       ],
-      equipes: [{text: 'Selecionar equipa', value: null}, 'HFC', 'AX', 'EN', 'FTTH'],
-      show:true
     }
   },
   created () {

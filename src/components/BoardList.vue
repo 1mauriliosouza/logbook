@@ -6,7 +6,7 @@
       </h4>
       <b-table Borderless Striped Small Bordered responsive hover :items="logs" :fields="fields">
         <template slot="actions" scope="row">
-          <b-btn size="sm" @click.stop="details(row.item)">Detalhes</b-btn>
+          <b-btn size="sm" @click.stop="details(row.item)">+ Detalhes</b-btn>
         </template>
       </b-table>
     </b-col>
@@ -24,7 +24,7 @@ export default {
     return {
       fields: {
         data: { label: 'Data', sortable: true, 'class': 'text-left' },
-        equipe: { label: 'Equipe', sortable: true, 'class': 'text-left' },
+        equipe: { label: 'Tecnologia', sortable: true, 'class': 'text-left' },
         operador: { label: 'Operador', sortable: true, 'class': 'text-left' },
         nodo: { label: 'Nodo', sortable: true, 'class': 'text-left' },
         tir: { label: 'TIR', sortable: true, 'class': 'text-left' },
@@ -68,4 +68,7 @@ export default {
     width: 96%;
     margin: 0 auto;
   }
+  table tbody tr td {
+  font-size: 14px;
+}
 </style>

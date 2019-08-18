@@ -18,7 +18,7 @@
                     :label-cols="4"
                     breakpoint="md"
                     label="Equipa">
-            <b-form-select id="equipe" v-model="board.equipe"></b-form-select>
+            <b-form-select id="equipe" v-model="board.equipe" :options="tecnologias"></b-form-select>
           </b-form-group>
           <b-form-group id="fieldsetHorizontal"
                     horizontal
@@ -53,7 +53,7 @@
                     :label-cols="4"
                     breakpoint="md"
                     label="Avisado">
-            <b-form-input id="avisado" v-model.trim="board.avisado"></b-form-input>
+            <b-form-select id="avisado" v-model="board.avisado" :options="informes"></b-form-select>
           </b-form-group>
           <b-button type="submit" variant="primary">Salvar</b-button>
         </b-form>
@@ -76,10 +76,20 @@ export default {
   data () {
     return {
       ref: firebase.firestore().collection('logs'),
-      board: {
-        equipe: [{text: 'Selecionar equipa', value: null}, 'HFC', 'AX', 'EN', 'FTTH'],
-        show:true
-      },
+      board: {},
+      selected: null,
+      tecnologias: [
+        { text:'HFC'}, 
+        { text:'AX'}, 
+        { text:'EN'}, 
+        { text:'FTTH'}
+        ],
+        informes: [
+        { text:'Avisado a CDU (EULEN)'}, 
+        { text:'Avisado a CDU (FLM)'}, 
+        { text:'Cancelado'}, 
+        { text:'Reaberto'}
+        ],
       types: [
           'text',
           'number',

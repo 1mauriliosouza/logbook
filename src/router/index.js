@@ -25,6 +25,6 @@ export default new Router({
         path: '/edit-board/:id',
         name: 'EditBoard',
         component: EditBoard
-      }
+      },
     ]
   })
